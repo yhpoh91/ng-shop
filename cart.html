@@ -1,0 +1,26 @@
+<div flex="90" layout="column" layout-align="center center">
+    <div layout="row" layout-align="center center">
+        <!-- Item -->
+        <div flex="80">Item</div>
+
+        <!-- Quantity -->
+        <div flex="10">QTY</div>
+
+        <!-- Price -->
+        <div flex="10">Price</div>
+
+    </div>
+
+    <div layout="row" layout-align="center center" ng-repeat="item in items">
+        <!-- Item -->
+        <div flex="80">{{item.name}}</div>
+
+        <!-- Quantity -->
+        <div flex="10">{{item.quantity}}</div>
+
+        <!-- Price -->
+        <div flex="10">{{item.price}}</div>
+
+    </div>
+
+</div>
