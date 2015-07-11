@@ -1,25 +1,100 @@
-<div flex="90" layout="column" layout-align="center center">
-    <div layout="row" layout-align="center center">
+<div>
+    <h1>Cart</h1>
+    <div layout="row">
         <!-- Item -->
-        <div flex="80">Item</div>
+        <div flex="50" class="center">
+            Item
+        </div>
 
         <!-- Quantity -->
-        <div flex="10">QTY</div>
+        <div flex="30" class="center">
+            Quantity
+        </div>
 
         <!-- Price -->
-        <div flex="10">Price</div>
+        <div flex="20" class="center">
+            Unit Price
+        </div>
 
     </div>
 
-    <div layout="row" layout-align="center center" ng-repeat="item in items">
+    <hr>
+
+    <div layout="row" layout-align="center start" ng-repeat="item in items">
         <!-- Item -->
-        <div flex="80">{{item.name}}</div>
+        <div flex="50">
+            <img class="wl-image-small start-margin end-margin" src="http://lorempixel.com/500/500/">
+            {{item.name}}
+        </div>
 
         <!-- Quantity -->
-        <div flex="10">{{item.quantity}}</div>
+        <div flex="30" class="center">
+            <span class="glyphicon glyphicon-plus start-margin-small end-margin-small"></span>
+            {{item.quantity}}
+            <span class="glyphicon glyphicon-minus start-margin-small end-margin-small"></span>
+        </div>
 
         <!-- Price -->
-        <div flex="10">{{item.price}}</div>
+        <div flex="20" class="center">{{item.price}}</div>
+
+    </div>
+
+    <hr>
+
+    <div layout="row">
+
+        <!-- Subtotal -->
+        <div flex="30" offset="50">
+            <div class="end">
+                Subtotal
+            </div>
+        </div>
+
+        <div flex="20">
+            <div class="center">
+                S$2.50
+            </div>
+        </div>
+
+    </div>
+
+    <div layout="row">
+
+        <!-- Tax -->
+        <div flex="30" offset="50">
+            <div class="end">
+                Tax
+            </div>
+        </div>
+
+        <div flex="20">
+            <div class="center">
+                S$0.50
+            </div>
+        </div>
+
+    </div>
+
+    <div layout="row">
+        <div flex offset="50">
+            <hr>
+        </div>
+    </div>
+
+    <div layout="row">
+
+        <!-- Total -->
+        <div flex="30" offset="50">
+            <div class="end">
+                <b>Total</b>
+            </div>
+        </div>
+
+        <div flex="20">
+            <div class="center">
+                <b>S$3.00</b>
+            </div>
+        </div>
 
     </div>
 

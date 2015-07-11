@@ -16,7 +16,6 @@ hr {
     border: 0;
     clear:both;
     display:block;
-    width: 90%;
     background-color:#f0f0f0;
     height: 1px;
 }
@@ -86,4 +85,28 @@ md-card {
     font-weight: 300;
     font-size: 16px;
     color: #808080;
+}
+
+.end {
+    text-align: right;
+}
+
+.start {
+    text-align: left;
+}
+
+.end-margin {
+    margin-right: 20px;
+}
+
+.end-margin-small {
+    margin-right: 10px;
+}
+
+.start-margin {
+    margin-left: 20px;
+}
+
+.start-margin-small {
+    margin-left: 10px;
 }
