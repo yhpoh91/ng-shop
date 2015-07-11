@@ -23,7 +23,7 @@
     <div layout="row" layout-align="center start" ng-repeat="item in items">
         <!-- Item -->
         <div flex="50">
-            <img class="wl-image-small start-margin end-margin" src="http://lorempixel.com/500/500/">
+            <img class="wl-image-small start-margin end-margin grey-bg" ng-src="http://lorempixel.com/500/500/">
             {{item.name}}
         </div>
 
@@ -35,7 +35,7 @@
         </div>
 
         <!-- Price -->
-        <div flex="20" class="center">{{item.price}}</div>
+        <div flex="20" class="center">S$ {{item.price | number:2}}</div>
 
     </div>
 
@@ -52,7 +52,7 @@
 
         <div flex="20">
             <div class="center">
-                S$2.50
+                S$ {{subtotal | number:2}}
             </div>
         </div>
 
@@ -69,7 +69,7 @@
 
         <div flex="20">
             <div class="center">
-                S$0.50
+                S$ {{tax | number:2}}
             </div>
         </div>
 
@@ -92,7 +92,7 @@
 
         <div flex="20">
             <div class="center">
-                <b>S$3.00</b>
+                <b>S$ {{total | number:2}}</b>
             </div>
         </div>
 

@@ -110,3 +110,12 @@ md-card {
 .start-margin-small {
     margin-left: 10px;
 }
+
+.fit-parent {
+    width: 100%;
+    height: 100%;
+}
+
+.grey-bg {
+    background-color: #e0e0e0;
+}

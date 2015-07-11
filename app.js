@@ -59,4 +59,14 @@ app.controller("Cart", ['$scope', '$http', '$state', function($scope, $http, sta
         quantity: 6,
         price: 2.20
     }]
+
+    var subtotal = 0;
+    var items = $scope.items;
+    for (var i = 0; i < items.length; i++) {
+        subtotal = subtotal + items[i]['price'];
+    }
+
+    $scope.subtotal = subtotal;
+    $scope.tax = 0.50;
+    $scope.total = $scope['subtotal']+ $scope['tax'];
 }]);
