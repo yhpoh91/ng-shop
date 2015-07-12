@@ -60,13 +60,24 @@ app.controller("Cart", ['$scope', '$http', '$state', function($scope, $http, sta
         price: 2.20
     }]
 
-    var subtotal = 0;
-    var items = $scope.items;
-    for (var i = 0; i < items.length; i++) {
-        subtotal = subtotal + items[i]['price'];
+
+    $scope.quantities = [];
+    for(var i = 1; i <= 100; i++){
+        $scope.quantities.push(i);
     }
 
-    $scope.subtotal = subtotal;
-    $scope.tax = 0.50;
-    $scope.total = $scope['subtotal']+ $scope['tax'];
+    $scope.recalculate = function () {
+        var subtotal = 0;
+        var items = $scope.items;
+        for (var i = 0; i < items.length; i++) {
+            subtotal = subtotal + (items[i].price * items[i].quantity);
+            console.log(items[i].quantity);
+        }
+
+        $scope.subtotal = subtotal;
+        $scope.tax = $scope.subtotal * 0.07;
+        $scope.total = $scope.subtotal + $scope.tax;
+    };
+
+    $scope.recalculate();
 }]);

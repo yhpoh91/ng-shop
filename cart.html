@@ -2,12 +2,12 @@
     <h1>Cart</h1>
     <div layout="row">
         <!-- Item -->
-        <div flex="50" class="center">
+        <div flex="60" class="center">
             Item
         </div>
 
         <!-- Quantity -->
-        <div flex="30" class="center">
+        <div flex="20" class="center">
             Quantity
         </div>
 
@@ -20,18 +20,21 @@
 
     <hr>
 
-    <div layout="row" layout-align="center start" ng-repeat="item in items">
+    <div layout="row" layout-align="center center" ng-repeat="item in items">
         <!-- Item -->
-        <div flex="50">
+        <div flex="60" layout-align="center center">
             <img class="wl-image-small start-margin end-margin grey-bg" ng-src="http://lorempixel.com/500/500/">
             {{item.name}}
         </div>
 
         <!-- Quantity -->
-        <div flex="30" class="center">
-            <span class="glyphicon glyphicon-plus start-margin-small end-margin-small"></span>
-            {{item.quantity}}
-            <span class="glyphicon glyphicon-minus start-margin-small end-margin-small"></span>
+        <div flex="20" layout='row' layout-fill layout-margin layout-align='center center'>
+            <!--<span class="glyphicon glyphicon-plus start-margin-small end-margin-small"></span>-->
+            <!--{{item.quantity}}-->
+            <!--<span class="glyphicon glyphicon-minus start-margin-small end-margin-small"></span>-->
+            <md-select ng-model="item.quantity" ng-change="recalculate()">
+                <md-option ng-value="qty" ng-repeat="qty in quantities">{{ qty }}</md-option>
+            </md-select>
         </div>
 
         <!-- Price -->
@@ -44,7 +47,7 @@
     <div layout="row">
 
         <!-- Subtotal -->
-        <div flex="30" offset="50">
+        <div flex="20" offset="60">
             <div class="end">
                 Subtotal
             </div>
@@ -61,7 +64,7 @@
     <div layout="row">
 
         <!-- Tax -->
-        <div flex="30" offset="50">
+        <div flex="20" offset="60">
             <div class="end">
                 Tax
             </div>
@@ -84,7 +87,7 @@
     <div layout="row">
 
         <!-- Total -->
-        <div flex="30" offset="50">
+        <div flex="20" offset="60">
             <div class="end">
                 <b>Total</b>
             </div>
