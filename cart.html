@@ -1,5 +1,7 @@
-<div>
-    <h1>Cart</h1>
+<md-dialog aria-label="Cart">
+    <md-dialog-content>
+<div class="start-margin end-margin top-margin bottom-margin">
+    <!--<h1>Cart</h1>-->
     <div layout="row">
         <!-- Item -->
         <div flex="60" class="center">
@@ -7,12 +9,12 @@
         </div>
 
         <!-- Quantity -->
-        <div flex="20" class="center">
+        <div flex="20" class="end">
             Quantity
         </div>
 
         <!-- Price -->
-        <div flex="20" class="center">
+        <div flex="20" class="end">
             Unit Price
         </div>
 
@@ -22,13 +24,17 @@
 
     <div layout="row" layout-align="center center" ng-repeat="item in items">
         <!-- Item -->
-        <div flex="60" layout-align="center center">
-            <img class="wl-image-small start-margin end-margin grey-bg" ng-src="http://lorempixel.com/500/500/">
-            {{item.name}}
+        <div flex="60" layout="row" layout-align="center center">
+            <div class="start-margin end-margin">
+                <img class="wl-image-small grey-bg" ng-src="http://lorempixel.com/500/500/">
+            </div>
+            <div>
+                {{item.name}}
+            </div>
         </div>
 
         <!-- Quantity -->
-        <div flex="20" layout='row' layout-fill layout-margin layout-align='center center'>
+        <div flex="20" layout='row' layout-fill layout-margin layout-align='end center'>
             <!--<span class="glyphicon glyphicon-plus start-margin-small end-margin-small"></span>-->
             <!--{{item.quantity}}-->
             <!--<span class="glyphicon glyphicon-minus start-margin-small end-margin-small"></span>-->
@@ -38,7 +44,7 @@
         </div>
 
         <!-- Price -->
-        <div flex="20" class="center">S$ {{item.price | number:2}}</div>
+        <div flex="20" class="end">S$ {{item.price | number:2}}</div>
 
     </div>
 
@@ -54,7 +60,7 @@
         </div>
 
         <div flex="20">
-            <div class="center">
+            <div class="end">
                 S$ {{subtotal | number:2}}
             </div>
         </div>
@@ -71,7 +77,7 @@
         </div>
 
         <div flex="20">
-            <div class="center">
+            <div class="end">
                 S$ {{tax | number:2}}
             </div>
         </div>
@@ -94,11 +100,25 @@
         </div>
 
         <div flex="20">
-            <div class="center">
+            <div class="end">
                 <b>S$ {{total | number:2}}</b>
             </div>
         </div>
 
     </div>
 
+    <div layout-sm="column" layout="row" layout-align-sm="center end">
+        <div flex-gt-sm></div>
+
+        <div>
+            <md-button class="md-warn md-raised top-margin">Checkout</md-button>
+        </div>
+
+        <div>
+            <md-button class="md-primary md-raised top-margin" ng-click="back()">Cancel</md-button>
+        </div>
+    </div>
+
 </div>
+    </md-dialog-content>
+    </md-dialog>

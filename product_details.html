@@ -13,11 +13,11 @@
             <hr />
 
             <div flex="100" layout="row" layout-md="column" layout-align-md="start start">
-                <span><a href="#" class="main-details-like-comment-suggestion">5 likes</a></span>
+                <span><a href="#" class="main-details-like-comment-suggestion">{{like}} likes</a></span>
                 <span hide-md class="main-details-like-comment-suggestion">&middot;</span>
-                <span><a href="#" class="main-details-like-comment-suggestion">3 comments</a></span>
-                <span hide-md class="main-details-like-comment-suggestion">&middot;</span>
-                <span><a href="#" class="main-details-like-comment-suggestion">2 suggestions</a></span>
+                <span><a ng-click="gotoComments()" class="main-details-like-comment-suggestion">{{comments.length}} comments</a></span>
+                <!--<span hide-md class="main-details-like-comment-suggestion">&middot;</span>-->
+                <!--<span><a href="#" class="main-details-like-comment-suggestion">2 suggestions</a></span>-->
             </div>
 
         </div>
@@ -44,8 +44,7 @@
             <!-- Price -->
             <div layout="row" layout-align="start center">
                 <span class="glyphicon glyphicon-tag main-details-tag-icon"></span>
-                <span class="details-text main-details-tag">S$ </span>
-                <span class="details-text main-details-tag">{{price}}</span>
+                <span class="details-text main-details-tag">S$ {{price}}</span>
             </div>
 
             <!-- Availability -->
@@ -63,4 +62,23 @@
     </div>
 
 
+
+</div>
+
+<div id="comments">
+    <div layout="row" layout-align="center start" ng-repeat="comment in comments" class="top-margin-small bottom-margin-small">
+        <div flex="70" layout="row" layout-align="start center">
+
+            <!-- Profile Picture -->
+            <div class="start-margin end-margin">
+                <img class="wl-image-small" src="http://lorempixel.com/500/500/">
+            </div>
+
+            <!-- Details -->
+            <div layout="column">
+                <div>{{comment.name}}</div>
+                <div>{{comment.comment}}</div>
+            </div>
+        </div>
+    </div>
 </div>

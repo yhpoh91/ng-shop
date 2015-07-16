@@ -1,14 +1,14 @@
-var app = angular.module('bolui', ['ngMaterial', 'ui.router']);
+var app = angular.module('bolui', ['ngMaterial', 'ui.router', 'angularModalService']);
 
 app.config(['$mdThemingProvider', '$stateProvider', '$urlRouterProvider' , function($mdThemingProvider, $stateProvider, $urlRouterProvider){
     $mdThemingProvider.theme('default')
         .primaryPalette('blue')
         .accentPalette('pink')
 
-    $stateProvider.state('product_details_empty', {
-        url: "/product_details",
-        templateUrl: "product_details_empty.html",
-        controller:"ProductDetailsEmpty"
+    $stateProvider.state('404', {
+        url: "/404",
+        templateUrl: "404.html",
+        controller:"Error404"
     })
 
     $stateProvider.state('product_details', {
@@ -23,14 +23,27 @@ app.config(['$mdThemingProvider', '$stateProvider', '$urlRouterProvider' , funct
         controller: "Cart"
     })
 
-    $urlRouterProvider.otherwise('/product_details');
+    $stateProvider.state('product_list', {
+        url: "/category/:category",
+        templateUrl: "product_list.html",
+        controller: "ProductList"
+    })
+
+    $urlRouterProvider.otherwise('/404');
 
 }]);
 
-app.controller("ProductDetails", ['$scope', '$http', '$stateParams', '$state', function($scope, $http, $stateParams, $state) {
+app.controller("Error404", ['$scope', function($scope){
+    $scope.goback = function(){
+        window.history.back();
+    }
+
+}]);
+
+app.controller("ProductDetails", ['$scope', '$http', '$stateParams', '$state', '$location', '$anchorScroll', 'ModalService', function($scope, $http, $stateParams, $state, $location, $anchorScroll, ModalService) {
     var productId = $stateParams.productId;
 
-        if (!productId) $state.go('product_details_empty');
+        if (!productId) $state.go('404');
 
     $scope.pictures = [1,2,3,4];
     $scope.price = productId;
@@ -39,23 +52,58 @@ app.controller("ProductDetails", ['$scope', '$http', '$stateParams', '$state', f
     $scope.product_size = "M";
     $scope.color = "Black";
     $scope.available = "Available";
+
+    $scope.like = 4;
+    $scope.comments = [
+        {
+            name: "Bo Hui",
+            comment: "I like this item very much"
+        },
+        {
+            name: "Yee Hui",
+            comment: "This is really a good product"
+        },
+        {
+            name: "Gilford",
+            comment: "Not bad, at least usable"
+        },
+        {
+            name: "Wen Bin",
+            comment: "Will be buying it again"
+        },
+        {
+            name: "Ivan",
+            comment: "I am hugging it everyday"
+        },
+        {
+            name: "Ming Jian",
+            comment: "Suang dao liao"
+        }
+    ];
+
+    $scope.gotoComments = function(){
+        $location.hash('comments');
+        $anchorScroll();
+    };
+
+
 }]);
 
-app.controller("Cart", ['$scope', '$http', '$state', function($scope, $http, state) {
+app.controller("Cart", ['$scope', '$http', '$state', '$mdDialog', function($scope, $http, $state, $mdDialog) {
     $scope.items = [{
-        name: "item 1",
+        name: "item 1 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         quantity: 2,
         price: 2.40
     },{
-        name: "item 2",
+        name: "item 2 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         quantity: 7,
         price: 3.40
     },{
-        name: "item 3",
+        name: "item 3 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         quantity: 1,
         price: 5.40
     },{
-        name: "item 4",
+        name: "item 4 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         quantity: 6,
         price: 2.20
     }]
@@ -80,4 +128,72 @@ app.controller("Cart", ['$scope', '$http', '$state', function($scope, $http, sta
     };
 
     $scope.recalculate();
+
+    $scope.back = function() {
+        $mdDialog.cancel();
+    };
+
+    $scope.hide = function() {
+        $mdDialog.hide();
+    };
+    $scope.cancel = function() {
+        $mdDialog.cancel();
+    };
+    $scope.answer = function(answer) {
+        $mdDialog.hide(answer);
+    };
+}]);
+
+app.controller("Toolbar", ['$scope', '$http', '$state', '$mdDialog', function($scope, $http, $state, $mdDialog) {
+
+    $scope.categories = ['Hat', 'Sunglasses', 'Top', 'Bottom'];
+
+    $scope.showCart = function(){
+        $state.go('cart');
+    }
+
+    $scope.showCartDialog = function(ev) {
+        $mdDialog.show({
+            controller: "Cart",
+            templateUrl: 'cart.html',
+            parent: angular.element(document.body),
+            targetEvent: ev,
+            clickOutsideToClose: true,
+            escapeToClose: true
+        });
+    };
+
+    $scope.gotoCategory = function(category){
+        $state.go('product_list', {category: category});
+    }
+}]);
+
+app.controller("ProductList", ['$scope', '$http', '$state', '$stateParams', function($scope, $http, $state, $stateParams){
+    $scope.category = $stateParams.category;
+
+    $scope.gotoProduct = function(id){
+        $state.go('product_details', {productId: id});
+    }
+
+    $scope.products = [{
+        imageURL: "http://lorempixel.com/500/500/",
+        name: "Something",
+        price: 2.70
+    },{
+        imageURL: "http://lorempixel.com/500/500/",
+        name: "Something else",
+        price: 3.40
+    },{
+        imageURL: "http://lorempixel.com/500/500/",
+        name: "My banana",
+        price: 8.50
+    },{
+        imageURL: "http://lorempixel.com/500/500/",
+        name: "Bread",
+        price: 2.10
+    },{
+        imageURL: "http://lorempixel.com/500/500/",
+        name: "Watch",
+        price: 24.70
+    }];
 }]);

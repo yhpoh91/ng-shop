@@ -1,10 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
-
-</body>
-</html>
+<div class="start-margin end-margin">
+    <h1>{{category}}</h1>
+    <md-grid-list
+        md-cols-sm="1"
+        md-cols-md="2"
+        md-cols-lg="3"
+        md-cols-gt-lg="4"
+        md-row-height="3:4"
+        md-gutter="5px" >
+    <md-grid-tile ng-repeat="product in products"
+                  md-rowspan="1"
+                  md-colspan="1">
+        <md-card md-ink-ripple ng-click="gotoProduct(product.price)">
+            <img ng-src="{{product.imageURL}}" class="md-card-image" alt="product image">
+            <md-card-content>
+                <p>{{product.name}}</p>
+                <p>S$ {{product.price}}</p>
+            </md-card-content>
+        </md-card>
+    </md-grid-tile>
+</md-grid-list>
+</div>

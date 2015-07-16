@@ -103,12 +103,36 @@ md-card {
     margin-right: 10px;
 }
 
+.end-padding {
+    padding-right: 20px;
+}
+
 .start-margin {
     margin-left: 20px;
 }
 
 .start-margin-small {
     margin-left: 10px;
+}
+
+.start-padding {
+    padding-left: 20px;
+}
+
+.top-margin {
+    margin-top: 20px;
+}
+
+.top-margin-small {
+    margin-top: 10px;
+}
+
+.bottom-margin {
+    margin-bottom: 20px;
+}
+
+.bottom-margin-small {
+    margin-bottom: 10px;
 }
 
 .fit-parent {
@@ -118,4 +142,8 @@ md-card {
 
 .grey-bg {
     background-color: #e0e0e0;
+}
+
+md-card[md-ink-ripple] {
+    position: relative;
 }

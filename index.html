@@ -20,14 +20,26 @@
     <script src="bower_components/hammerjs/hammer.min.js"></script>
     <script src="bower_components/angular-material/angular-material.min.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="bower_components\angular-modal-service\dst\angular-modal-service.min.js"></script>
     <script src="app.js"></script>
 
 </head>
 <body ng-app="bolui" layout="column" layout-align="top center">
 
-    <md-toolbar>
+    <md-toolbar ng-controller="Toolbar">
         <div class="md-toolbar-tools">
-            <span class="md-flex">Bolui</span>
+
+            <md-button class="md-icon-button"><span class="glyphicon glyphicon-home"></span></md-button>
+
+            <md-button class="md-button-primary"
+                       ng-repeat="category in categories"
+                       ng-click="gotoCategory(category)">{{category}}</md-button>
+            <span flex></span>
+
+            <md-button class="md-icon-button"><span class="glyphicon glyphicon-user"></span></md-button>
+            <md-button class="md-icon-button"><span class="glyphicon glyphicon-globe"></span></md-button>
+            <md-button class="md-icon-button" ng-click="showCartDialog($event)"><span class="glyphicon glyphicon-shopping-cart"></span></md-button>
+
         </div>
     </md-toolbar>
 
