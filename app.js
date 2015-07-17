@@ -30,6 +30,12 @@ app.config(['$mdThemingProvider', '$stateProvider', '$urlRouterProvider' , funct
     })
 
     $stateProvider.state('home', {
+        url: "",
+        templateUrl: "category_list.html",
+        controller: "CategoryList"
+    })
+
+    $stateProvider.state('home_alternate', {
         url: "/",
         templateUrl: "category_list.html",
         controller: "CategoryList"
