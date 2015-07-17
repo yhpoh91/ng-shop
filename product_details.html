@@ -2,13 +2,18 @@
     <div flex="90" layout-sm="column" layout-gt-sm="row" layout-align-gt-sm="center start" layout-align-sm="center center">
 
         <div class="main-details-container" flex-sm="100" flex-md="33" flex-gt-md="50" layout="column" layout-align="center center">
-            <img class="wl-image-big" src="http://lorempixel.com/500/500/">
+            <!--<img class="wl-image-big" src="http://lorempixel.com/500/500/">-->
 
-            <div layout="row" layout-align="center center">
-                <div flex="25" ng-repeat="picture in pictures">
-                    <img class="wl-image-small" src="http://lorempixel.com/500/500/">
-                </div>
-            </div>
+            <!--<div layout="row" layout-align="center center">-->
+                <!--<div flex="25" ng-repeat="picture in pictures">-->
+                    <!--<img class="wl-image-small" src="http://lorempixel.com/500/500/">-->
+                <!--</div>-->
+            <!--</div>-->
+            <carousel interval="100">
+                <slide ng-repeat="id in [1,2,3,4,5]">
+                    <img ng-src="http://lorempixel.com/500/500/food/{{id}}" class="wl-image-big" active="slide.active">
+                </slide>
+            </carousel>
 
             <hr />
 
