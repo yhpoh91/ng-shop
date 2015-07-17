@@ -29,6 +29,12 @@ app.config(['$mdThemingProvider', '$stateProvider', '$urlRouterProvider' , funct
         controller: "ProductList"
     })
 
+    $stateProvider.state('home', {
+        url: "/",
+        templateUrl: "category_list.html",
+        controller: "CategoryList"
+    })
+
     $urlRouterProvider.otherwise('/404');
 
 }]);
@@ -166,6 +172,10 @@ app.controller("Toolbar", ['$scope', '$http', '$state', '$mdDialog', function($s
     $scope.gotoCategory = function(category){
         $state.go('product_list', {category: category});
     }
+
+    $scope.goHome = function(){
+        $state.go('home');
+    }
 }]);
 
 app.controller("ProductList", ['$scope', '$http', '$state', '$stateParams', function($scope, $http, $state, $stateParams){
@@ -195,5 +205,25 @@ app.controller("ProductList", ['$scope', '$http', '$state', '$stateParams', func
         imageURL: "http://lorempixel.com/500/500/",
         name: "Watch",
         price: 24.70
+    }];
+}]);
+
+app.controller("CategoryList", ['$scope', '$http', '$state', '$stateParams', function($scope, $http, $state, $stateParams){
+    $scope.gotoCategory = function(category){
+        $state.go('product_list', {category: category});
+    }
+
+    $scope.categories = [{
+        name: "Hat",
+        imageURL: "http://lorempixel.com/500/500/"
+    },{
+        name: "Sunglasses",
+        imageURL: "http://lorempixel.com/500/500/"
+    },{
+        name: "Top",
+        imageURL: "http://lorempixel.com/500/500/"
+    },{
+        name: "Bottom",
+        imageURL: "http://lorempixel.com/500/500/"
     }];
 }]);

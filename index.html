@@ -29,15 +29,15 @@
     <md-toolbar ng-controller="Toolbar">
         <div class="md-toolbar-tools">
 
-            <md-button class="md-icon-button"><span class="glyphicon glyphicon-home"></span></md-button>
+            <md-button class="md-icon-button" ng-click="goHome()"><span class="glyphicon glyphicon-home"></span></md-button>
 
             <md-button class="md-button-primary"
                        ng-repeat="category in categories"
                        ng-click="gotoCategory(category)">{{category}}</md-button>
             <span flex></span>
 
-            <md-button class="md-icon-button"><span class="glyphicon glyphicon-user"></span></md-button>
-            <md-button class="md-icon-button"><span class="glyphicon glyphicon-globe"></span></md-button>
+            <!--<md-button class="md-icon-button"><span class="glyphicon glyphicon-user"></span></md-button>-->
+            <!--<md-button class="md-icon-button"><span class="glyphicon glyphicon-globe"></span></md-button>-->
             <md-button class="md-icon-button" ng-click="showCartDialog($event)"><span class="glyphicon glyphicon-shopping-cart"></span></md-button>
 
         </div>
